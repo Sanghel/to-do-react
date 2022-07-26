@@ -1,5 +1,4 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 
 function useLocalStorage(itemName, initialValue) { 
     const [error, setError] = useState(false);
@@ -12,10 +11,9 @@ function useLocalStorage(itemName, initialValue) {
           const localStorageItem = localStorage.getItem(itemName);
           let parsedItem;
           
-          
           if (!localStorageItem) {
             localStorageItem.setItem(itemName, JSON.stringify(initialValue));
-            parsedItem = [];
+            parsedItem = initialValue;
           } else {
             parsedItem = JSON.parse(localStorageItem);
           }
@@ -23,7 +21,7 @@ function useLocalStorage(itemName, initialValue) {
           setItem(parsedItem);
           setLoading(false);
         } catch(error) {
-          setError(error);
+          setError(true);
         }
   
       }, 1000);
@@ -37,7 +35,7 @@ function useLocalStorage(itemName, initialValue) {
         localStorage.setItem(itemName, strinfifiedItem);
         setItem(newItem);
       } catch(error) {
-        setError(error);
+        setError(true);
       }
     };
   

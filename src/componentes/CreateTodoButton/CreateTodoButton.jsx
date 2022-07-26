@@ -1,15 +1,16 @@
+import { propsToAttrMap } from "@vue/shared";
 import React from "react";
 import './CreateTodoButton.css';
 
-function CreateTodoButton() {
+function CreateTodoButton(props) {
     const onClickButton = () => {
-        alert('Aqui se deberia abrir el modal');
+        props.setOpenModal(prevState => !prevState);
     };
 
     return (
         <button 
             className="CreateTodoButton"
-            onClick={() => onClickButton()}
+            onClick={onClickButton}
         >
             +
         </button>
