@@ -32,7 +32,7 @@ function TodoProvider(props) {
   
     const addTodo = (text) => {
       const newTodos = [...todos];
-      newTodos.pus({
+      newTodos.push({
         completed: false,
         text: text,
       });
@@ -42,7 +42,7 @@ function TodoProvider(props) {
     const completeTodo = (text) => {
       const todoIndex = todos.findIndex(todo => todo.text == text);
       const newTodos = [...todos];
-      newTodos[todoIndex].completed = true;
+      newTodos[todoIndex].completed = !newTodos[todoIndex].completed;
       saveTodos(newTodos);
     }
   
